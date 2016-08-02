@@ -1,0 +1,20 @@
+import warnings
+
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore",category=DeprecationWarning)
+    import md5, sha
+
+df_noemailaddr['poi_emails'] = df_noemailaddr['shared_receipt_with_poi'] + df_noemailaddr['from_this_person_to_poi'] + \
+    df_noemailaddr['from_poi_to_this_person']
+ggplot(df_noemailaddr, aes(x = 'poi_emails', y = 'salary', color = 'poi')) +\
+    geom_point() +\
+    geom_vline(xintercept = 1000, color = 'black')
+
+import warnings
+
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore",category=DeprecationWarning)
+    import md5, sha
+    
+ggplot(df_noemailaddr, aes(x = 'salary', y = 'exercised_stock_options', color = 'poi')) +\
+    geom_point()

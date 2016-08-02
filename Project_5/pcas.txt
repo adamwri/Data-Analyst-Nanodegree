@@ -1,0 +1,32 @@
+from sklearn.decomposition import PCA
+
+df_income = df_noemailaddr[['salary', 'director_fees', 'deferral_payments', 'deferred_income']]
+
+Xincome = df_income
+Y = df_noemailaddr['poi']
+
+pca = PCA(n_components = 3)
+pca_income = pca.fit_transform(Xincome)
+df_pca_income = pandas.DataFrame(data = pca_income, index = df_noemailaddr.index, columns = ['income1', 'income2', \
+                                                                                            'income3'])
+print pca.explained_variance_ratio_
+
+df_equity = df_noemailaddr[['exercised_stock_options', 'restricted_stock', 'restricted_stock_deferred']]
+
+Xequity = df_equity
+Y = df_noemailaddr['poi']
+
+pca = PCA(n_components = 2)
+pca_equity = pca.fit_transform(Xequity)
+df_pca_equity = pandas.DataFrame(data = pca_equity, index = df_noemailaddr.index, columns = ['equity1', 'equity2'])
+print pca.explained_variance_ratio_
+
+df_bonus = df_noemailaddr[['bonus', 'long_term_incentive', 'expenses', 'loan_advances', 'other']]
+
+Xbonus = df_bonus
+Y = df_noemailaddr['poi']
+
+pca = PCA(n_components = 3)
+pca_bonus = pca.fit_transform(Xbonus)
+#df_pca_bonus = pandas.DataFrame(data = pca_bonus, index = df_noemailaddr.index, columns = ['bonus1', 'bonus2', 'bouns3'])
+print pca.explained_variance_ratio_

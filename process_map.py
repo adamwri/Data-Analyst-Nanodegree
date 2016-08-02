@@ -27,6 +27,7 @@ POS = ['lat', 'lon']
 
 
 def shape_element(element):
+    # Function processes each element passed in from the iterparse call in process map, formatting into dictionaries
     node = {}
     if element.tag == 'node' or element.tag == 'way':
         created = {}
